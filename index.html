@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body style="background-color: aliceblue;">
+    <nav class="navbar bg-body-tertiary" style="background-color: rgb(82, 82, 232); color: rgb(255, 255, 255); position: fixed; width: 100%; z-index: 3;">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1">STARBHAK MARKET</span>
+        </div>
+      </nav>
+      <br>
+      <br>
+      <br>
+      <div class="card" id="cartinfo" style="width: 22rem; float: left; border: none; background-color: aliceblue;">
+      <div class="card" id="cartinfo" style="width: 20rem; margin-right: 2%;">
+        <div class="card-body">
+          <i class="fa-solid fa-x" type="button" id="cartclose" style="margin-left: 95%;"></i>
+          <br>
+          <br>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100%; background-color: rgb(82, 82, 232);" id="dropdownButton">
+                <a>Select Buy Method</a>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" onclick="changeText('Dine In')">Dine In</a></li>
+                <li><a class="dropdown-item" href="#" onclick="changeText('COD')">COD</a></li>
+                <li><a class="dropdown-item" href="#" onclick="changeText('Take Away')">Take Away</a></li>
+            </ul>
+        </div>
+        </div>
+        <div class="card-body">
+            <button type="button" class="btn btn-primary" style="width: 100%; background-color: rgb(82, 82, 232);">Mr.Jawir</button>
+        </div>
+      </div>
+    
+      <div class="card" style="width: 20rem; height: 30rem; margin-right: 2%; overflow: scroll;">
+        <div class="card-body">
+          <div class="card" id="dis1">
+            <div id="displayInfo"></div>
+            <div id="displayValue"></div>
+            <div>Quantity : <span id="quantity">1</span></div>
+            <button id="rem1">Remove</button>
+          </div>
+            <br>
+          <div class="card" id="dis2">
+            <div id="displayInfo2"></div>
+            <div id="displayValue2"></div>
+            <div>Quantity : <span id="quantity2">1</span></div>
+            <button id="rem2">Remove</button>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="width: 20rem; height: 10rem; margin-right: 2%;">
+        <div class="card-body">
+            <span>Tax : 10%</span>
+            <br>
+            <b>Total Amount : <span id="tax">0.1</span></b>
+            <br>
+            <br>
+            <button id="exportToTxt">Print Recipt</button>
+            <a id="downloadTxtLink" style="display:none;"></a>
+        </div>
+      </div>
+     </div>
+
+  
+     <div class="card">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" style="color: black;">Item List</a>
+              
+              <i class="fa-solid fa-cart-shopping" type="button" id="cart" onclick="cartshow" style="margin-left: 65%;"></i>
+            
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
+          </nav>
+    </div>
+    <br>
+    <div class="card" style="width: 14rem; float: left; margin-right: 2%; margin-top: 2%;">
+        <img src="https://joyfoodsunshine.com/wp-content/uploads/2022/11/breakfast-egg-sandwich-recipe-9.jpg" class="card-img-top" alt="Clickable Image" >
+        <div class="card-body">
+          <p class="card-text" id="infoItm">Egg Sandwich</p>
+          <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga">35000</span></h5>
+          <button style="float: left;" id="clickableImage">Add</button>
+        </div>
+      </div>
+
+      <div class="card" style="width: 14rem; float: left; margin-right: 2%; margin-top: 2%;">
+        <img src="https://joyfoodsunshine.com/wp-content/uploads/2022/11/breakfast-egg-sandwich-recipe-9.jpg" class="card-img-top" alt="Clickable Image" >
+        <div class="card-body">
+          <p class="card-text" id="infoItm2">Egg Sandwich Premium</p>
+          <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga2">50000</span></h5>
+          <button style="float: left;" id="clickableImage2">Add</button>
+        </div>
+      </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+<script>
+let methodbuy = '';
+let info1 = '';
+let info2 = '';
+
+$("#dis1").hide();
+$("#cartinfo").hide();
+$("#dis2").hide();
+
+let taxValue = 0;
+let quantity1 = 0;
+let quantity2 = 0;
+let pajak = 0.1;
+
+$(document).ready(function () {
+  $("#clickableImage").click(function () {
+    $("#dis1").show();
+    $("#cartinfo").show();
+    var hargaText = $('#harga').text();
+    info1 = $('#infoItm').text();  // Declare info1 globally
+    let integerValue = parseInt(hargaText);
+    if (!isNaN(integerValue)) {
+      $("#displayInfo").text(info1);
+      $("#displayValue").text("Price: Rp." + integerValue);
+      taxValue += integerValue;
+      pajakPersen = pajak * taxValue;
+      pajakTotal = pajakPersen + taxValue;
+      quantity1++;
+      $("#tax").text(pajakTotal);
+      $("#quantity").text(quantity1);
+    } else {
+      console.log("Conversion to Integer Failed");
+    }
+  });
+
+  $("#clickableImage2").click(function () {
+    $("#dis2").show();
+    $("#cartinfo").show();
+    var hargaText = $('#harga2').text();
+    info2 = $('#infoItm2').text();  // Declare info2 globally
+    let integerValue = parseInt(hargaText);
+
+    if (!isNaN(integerValue)) {
+      $("#displayInfo2").text(info2);
+      $("#displayValue2").text("Price: Rp." + integerValue);
+
+      taxValue += integerValue;
+      pajakPersen = pajak * taxValue;
+      pajakTotal = pajakPersen + taxValue;
+      quantity2++;
+      $("#tax").text(pajakTotal);
+      $("#quantity2").text(quantity2);
+    } else {
+      console.log("Conversion to Integer Failed");
+    }
+  });
+
+  $("#exportToTxt").click(function () {
+    changeText($("#dropdownButton").text());
+    exportToTxt();
+  });
+});
+
+$("#rem1").click(function () {
+  let itemPrice = parseInt($('#harga').text());
+  taxValue -= itemPrice;
+  quantity1--;
+  if (quantity1 === 0) {
+    $("#dis1").hide();
+  }
+  pajakTotal = pajak * taxValue;
+  pajakTotal2 = pajakTotal + taxValue;
+  $("#tax").text(pajakTotal2);
+  $("#quantity").text(quantity1);
+});
+
+$("#rem2").click(function () {
+  let itemPrice = parseInt($('#harga2').text());
+  taxValue -= itemPrice;
+  quantity2--;
+  if (quantity2 === 0) {
+    $("#dis2").hide();
+  }
+  pajakTotal = pajak * taxValue;
+  pajakTotal2 = pajakTotal + taxValue;
+  $("#tax").text(pajakTotal2);
+  $("#quantity2").text(quantity2);
+});
+
+$("#cart").click(function () {
+    $("#cartinfo").show();
+});
+
+$("#cartclose").click(function () {
+    $("#cartinfo").hide();
+});
+
+
+function changeText(option) {
+  $("#dropdownButton").text(option);
+  methodbuy = option;
+}
+
+function exportToTxt() {
+  if (methodbuy == 'Select Buy Method') {
+    alert("Pilih Metode pembelian");
+  } else {
+    let txtContent = `STARBHAK-MARKET\n---------------\n`;
+
+    if (quantity1 > 0) {
+      txtContent += `${info1}: ${quantity1}\n`;
+    }
+
+    if (quantity2 > 0) {
+      txtContent += `${info2}: ${quantity2}\n`;
+    }
+
+    if (quantity1 > 0 || quantity2 > 0) {
+      txtContent += `Tax:10%\nTotal Amount: Rp.${taxValue + pajak}\nMethod: ${methodbuy}\n\nCashier: Mr.Jawir\n--------------\nEnjoy Your Meal !`;
+
+      const blob = new Blob([txtContent], { type: 'text/plain' });
+      const downloadLink = document.getElementById('downloadTxtLink');
+      downloadLink.href = window.URL.createObjectURL(blob);
+      downloadLink.download = 'invoice.txt';
+      downloadLink.click();
+    }
+  }
+
+}
+</script>
+<script src="https://kit.fontawesome.com/24f3add6a5.js" crossorigin="anonymous"></script>
